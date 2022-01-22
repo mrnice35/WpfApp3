@@ -108,7 +108,7 @@ namespace WpfApp3
                 textBox.Foreground = Brushes.Red;
         }
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
+       /* private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Текстовые файлы (*.txt)|*.txt|Все файлы (*.*)|*.*";
@@ -116,9 +116,9 @@ namespace WpfApp3
             {
                 textBox.Text = File.ReadAllText(openFileDialog.FileName);
             }
-        }
+        }*/
 
-        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+       /* private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter= "Текстовые файлы (*.txt)|*.txt|Все файлы (*.*)|*.*";
@@ -126,11 +126,36 @@ namespace WpfApp3
             {
                 File.WriteAllText(saveFileDialog.FileName, textBox.Text);
             }
-        }
+        }*/
 
-        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        private void ExitExecuted(object sender, ExecutedRoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
+
+        private void OpenExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Текстовые файлы (*.txt)|*.txt|Все файлы (*.*)|*.*";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                textBox.Text = File.ReadAllText(openFileDialog.FileName);
+            }
+        }
+
+        private void SaveExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Текстовые файлы (*.txt)|*.txt|Все файлы (*.*)|*.*";
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                File.WriteAllText(saveFileDialog.FileName, textBox.Text);
+            }
+        }
+
+        /* private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+         {
+             Application.Current.Shutdown();
+         }*/
     }
 }
